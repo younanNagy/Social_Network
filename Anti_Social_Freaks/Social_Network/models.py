@@ -21,18 +21,19 @@ class Post(models.Model):# shares is missing $$$$$$$$$$
 
     def __str__(self):
         return self.content
-
+2
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.CharField(max_length=2000)
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE ,null=True )
 
     def __str__(self):
         return self.content
 
 
 class Like(models.Model):
-    liker=models.OneToOneField(User,on_delete=models.CASCADE)
+    liker=models.ForeignKey(User,on_delete=models.CASCADE)
     # Type of Like is missing
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
 
