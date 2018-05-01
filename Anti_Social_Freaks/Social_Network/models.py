@@ -38,6 +38,31 @@ class Like(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
 
 
+class Connection(models.Model):
+    From = models.ForeignKey(User, on_delete=models.CASCADE)
+    To = models.CharField(max_length=50)
+    interaction = models.IntegerField() # indicates how much a user interacts with another
+    status = models.IntegerField()
+    '''
+    status code
+    pending : 0
+    Friends : 1
+    Declined : 2
+    Blocked : 3
+    
+
+    def __str__(self):
+        if (status == 0):
+            return "pending"
+        elif (status == 1):
+            return "Friends"
+        elif (status == 2):
+            return "Declined"
+        else :
+            return "Blocked"
+    '''
+
+
 
 
 
