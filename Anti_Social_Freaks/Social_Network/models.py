@@ -17,7 +17,7 @@ class Profile(models.Model):
 class Post(models.Model):# shares is missing $$$$$$$$$$
     publisher = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=2000)
-    date_of_post = models.DateTimeField(null=True)
+    date_of_post = models.DateTimeField(null=True , auto_now_add=True)
 
     def __str__(self):
         return self.content

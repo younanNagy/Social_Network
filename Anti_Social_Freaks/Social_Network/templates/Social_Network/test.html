@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>home page</title>
 </head>
 <body>
 
-Hello World!
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type = "submit" value="Submit" />
+
+</form>
+
 
 </body>
 </html>
