@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-
+'''
+class User (models.Model):
+    user_name=models.CharField(max_length=50)
+    password=models.CharField(max_length=50)
+'''
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
-    mobile=models.CharField(max_length=11)
-    about=models.CharField(max_length=500)
-    date_of_birth= models.DateField()
+    mobile=models.CharField(max_length=11,blank=True)
+    about=models.CharField(max_length=500,blank=True)
+    date_of_birth= models.DateField(blank=True)
     image=models.ImageField(upload_to='profile_image',blank=True)#$$$$$$$$$$$$$$$$$
 
     def __str__(self):
@@ -39,8 +42,8 @@ class Like(models.Model):
 
 
 class Connection(models.Model):
-    From = models.ForeignKey(User, on_delete=models.CASCADE)
-    To = models.CharField(max_length=50)
+    From = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_requests_created')
+    To =models.ForeignKey(User, on_delete=models.CASCADE)
     interaction = models.IntegerField() # indicates how much a user interacts with another
     status = models.IntegerField()
     '''
