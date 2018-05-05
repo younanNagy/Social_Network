@@ -41,7 +41,41 @@ class Like(models.Model):
         return '%s %s %s' % (self.liker, 'Liked', self.post)
 
 
+class Connection(models.Model):
+    From = models.ForeignKey(User, on_delete=models.CASCADE, related_name='%(class)s_requests_created')
+    To = models.ForeignKey(User, on_delete=models.CASCADE)
+    interaction = models.IntegerField(blank=True)  # indicates how much a user interacts with another
+    status = models.IntegerField()
+
+    def __str__(self):
+        if (self.status == 0):
+            return '%s' % ("Pending")
 
 
+        elif (self.status == 1):
+            return '%s' % ("Friends")
+
+
+        elif (self.status == 2):
+            return '%s' % ("Declined")
+
+        elif (self.status == 3):
+            return '%s' % ("Blocked")
+
+
+        elif (self.status == 4):
+            return '%s' % ("Followed")
+
+        else:
+            return '%s' % ("Blocked")
+
+    '''
+    status code
+    pending : 0
+    Friends : 1
+    Declined : 2
+    Blocked : 3
+    Follow :4
+    '''
 
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+
+{{ username.username }}
+
+
+
+<br> <br> <br>
+
+Add as a friend
+<form method="post"  action="AddFriend/{{ username.id }}/ ">
+    {% csrf_token %}
+    <input type = "submit" value="Add" />
+
+</form>
+
+
+<br> <br>
+
+
+Follow
+<form method="post"  action="FollowFriend/{{ username.id }}/ ">
+    {% csrf_token %}
+    <input type = "submit" value="Follow" />
+
+</form>
+
+<br> <br>
+
+unFriend
+
+<form method="post"  action="unFriend/{{ username.id }}/ ">
+    {% csrf_token %}
+    <input type = "submit" value="UnFriend" />
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

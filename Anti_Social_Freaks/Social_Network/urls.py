@@ -18,4 +18,11 @@ urlpatterns = [
     path('home',views.home , name='home'), # home page
     path('CommentPost/<int:post_id>/', views.addComment, name='addcomment'), # add a comment for a given post id
     path('LikePost/<int:post_id>/', views.addLike, name='addLike'), # add a Like for a given post id
+    path('searchUser',views.search,name='search'), # Search for a user and go to it's profile
+    path('AddFriend/<int:friend_id>/',views.addFriend,name='addfriend'),
+    path('FollowFriend/<int:friend_id>/', views.followFriend, name='followfriend'),
+    path('unFriend/<int:friend_id>/', views.unFriend, name='unfriend' ),
+    path('FriendRequests/', views.showRequest, name='showrequest' ),
+    path('FriendRequests/Confirm/<int:friend_id>/', views.confirmFriend, name='confirmfriend'),
+
 ]

@@ -7,7 +7,21 @@
 <body>
 
 
-Hello Freaky!!
+
+Search
+<form method="post" action="searchUser">
+    {% csrf_token %}
+    {{ search_form }}
+    <input type = "submit" value="Search" />
+
+</form>
+
+<br> <br> <br>
+
+
+
+
+Hello Freaky!!     {{ user.username }}
 <form>
     <button type="submit" formaction="/anti-social/logout/">Logout</button>
 </form>
@@ -79,5 +93,28 @@ Hello Freaky!!
 </ul>
 
 
+<br> <br>
+
+Friend Requests
+
+<form method="post"  action="FriendRequests/">
+    {% csrf_token %}
+    <input type = "submit" value="Friend Requests" />
+
+</form>
+
+
+
 </body>
 </html>
+
+
+<br> <br> <br>
+
+
+
+{% for suggFriend in suggested_friends  %}
+
+    {{ suggFriend }}
+
+{% endfor  %}

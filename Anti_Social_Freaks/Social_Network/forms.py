@@ -45,3 +45,9 @@ class postForm(forms.Form):
 
 class commentForm(forms.Form):
     comment = forms.CharField(max_length=1000)
+
+
+
+
+class searchForm(forms.Form):
+    username = forms.CharField(max_length=150)

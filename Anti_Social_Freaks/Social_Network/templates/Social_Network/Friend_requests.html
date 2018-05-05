@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+{% for request in friend_requests %}
+
+  <li> {{request.From.username}}
+
+    <form method="post"  action="Confirm/{{ request.From.id  }}/ ">
+    {% csrf_token %}
+    <input type = "submit" value="Confirm" />
+
+    </form>
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</body>
+</html>
