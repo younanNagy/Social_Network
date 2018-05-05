@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+</head>
+<body>
+
+
+Hello Freaky!!
+<form>
+    <button type="submit" formaction="/anti-social/logout/">Logout</button>
+</form>
+
+
+
+<h3>Write a Post</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ post_form }}
+    <input type = "submit" value="Write" />
+
+</form>
+
+
+<br> <br>
+
+
+<h4>
+    Posts by other Freaks
+</h4>
+
+<ul>
+{% for post in posts %}
+
+    <li>{{ post.content }} <br> by: {{ post.publisher.username }} <br> at: {{ post.date }}
+
+    <br>
+
+<form method="post"  action="LikePost/{{ post.id }}/ ">
+    {% csrf_token %}
+    <input type = "submit" value="Like" />
+
+</form>
+
+    Likes {{    post.like_set.count }} <br>
+
+
+    Comments <br>
+    {% for comment in post.comment_set.all %}
+        <li>
+
+        {{comment.content }} by {{ comment.commenter.username }}
+
+        </li>
+
+
+        {% endfor %}
+
+
+
+
+    Write a Comment
+<form method="post"  action="CommentPost/{{ post.id }}/ ">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type = "submit" value="Comment" />
+
+</form>
+
+
+
+
+    </li>
+
+    <br> <br> <br>
+
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>

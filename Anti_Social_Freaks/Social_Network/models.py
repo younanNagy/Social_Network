@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 
 class Profile(models.Model):
@@ -17,15 +18,15 @@ class Profile(models.Model):
 class Post(models.Model):# shares is missing $$$$$$$$$$
     publisher = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=2000)
-    date_of_post = models.DateTimeField(null=True , auto_now_add=True)
+    date = models.DateTimeField(blank=True,default=datetime.now)
 
     def __str__(self):
         return self.content
-2
+
 
 class Comment(models.Model):
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
-    content = models.CharField(max_length=2000)
+    content = models.CharField(max_length=1000)
     commenter = models.ForeignKey(User, on_delete=models.CASCADE ,null=True )
 
     def __str__(self):
@@ -34,8 +35,10 @@ class Comment(models.Model):
 
 class Like(models.Model):
     liker=models.ForeignKey(User,on_delete=models.CASCADE)
-    # Type of Like is missing
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '%s %s %s' % (self.liker, 'Liked', self.post)
 
 
 

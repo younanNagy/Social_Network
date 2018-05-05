@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Logged out </title>
+</head>
+<body>
+ <div class="container">
+    <h1> BYE </h1>
+    <p>
+    You've logged out...you're not Mr/Freak anymore!!
+    </p>
+     <form method="post">
+    {% csrf_token%}
+    {{ form.as_p }}
+    <button type="submit" formaction="/anti-social/login/">Login</button>
+    </form>
+ </div>
+</body>
+</html>
