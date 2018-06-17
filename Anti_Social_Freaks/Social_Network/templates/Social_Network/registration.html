@@ -1,17 +1,121 @@
+{%  load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <title> Sign Up </title>
+
     <meta charset="UTF-8">
-    <title> Register </title>
-</head>
-<body>
- <div class="container">
-    <h1>Register</h1>
-    <form method="post">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- If IE use the latest rendering engine -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <style>
+    .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    }
+    .grid3{
+
+      width: 25%;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .clearfix::after, .clearfix::before {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    .lbls{
+      display: block;
+      font-size: 100px;
+    }
+    .Titles{
+      color: rgba(255, 255, 255, 1);
+      font-size: 20px;
+      text-align: left;
+      font-weight: bold;
+      display: block;
+    }
+    .Sign{
+        color: #67b168;
+        align-content: center;
+    }
+
+    .form{
+
+        color: lightseagreen;
+    }
+    .Bxs{
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      display: block;
+    }
+
+    .backGround{
+        background-image: url({% static 'Social_Network/images/x2.jpg' %});
+        background-size: cover;
+    }
+    .MainContainer{
+      background-color: rgba(34, 34, 34, 0.7);
+      width: 80%;
+      margin: 10% 10% ;
+      padding: 2% 2%;
+    }
+    </style>
+  </head>
+  <body class="backGround" >
+
+
+
+
+
+
+  <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src=" {% static 'Social_Network/images/White_Globe_Icon.png' %} " />
+
+          <a  class="navbar-brand" href="">Anti-Social Freaks</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+
+
+
+
+    <main class="MainContainer">
+
+      <div class="Titles">
+        <h2>Register to >> Anti Social Freaks..</h2>
+
+          <form method="post">
+              <div class="form">
     {% csrf_token%}
     {{ form.as_p }}
-    <button type="submit">sign up</button>
+
+                  </div>
+
+            <div class="Sign">
+                        <button type="submit">sign up</button>
+                </div>
+
     </form>
- </div>
-</body>
+
+
+      </div>
+
+
+    </main>
+  </body>
 </html>

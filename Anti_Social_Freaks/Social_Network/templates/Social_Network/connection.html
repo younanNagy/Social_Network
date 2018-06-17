@@ -1,0 +1,135 @@
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Anty-Social Freaks</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- If IE use the latest rendering engine -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+  .backGround{
+      background-image: url({% static 'Social_Network/images/x2.jpg' %});
+      background-size: cover;
+    }
+  .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  .center {
+    margin: auto;
+    width: 20%;
+    height: 10%;
+    border: 3px solid green;
+    padding: 10px;
+}
+  .FontEdits {
+      font-family: Times, serif ;
+  }
+  .MainTitle{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+
+  }
+  .SecondTitle{
+    margin-top: 1%;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+
+  }
+.MainContainer{
+      background-color: rgba(34, 34, 34, 0.7) ;
+      width: 90%;
+      margin: auto;
+      margin-top: 10%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      position: relative;
+      color: lime;
+       font-size: 32px;
+    }
+
+  .page-header
+ {
+      margin-top: 1%;
+    font-size: 200px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+
+ }
+
+  .two
+  {
+      margin-top: 0;
+      text-align: center;
+  }
+
+
+  </style>
+  </head>
+  <body class="backGround">
+
+
+
+  <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src=" {% static 'Social_Network/images/White_Globe_Icon.png' %} " />
+
+          <a  class="navbar-brand" href="{% url 'Social_Network:home' %}">Anti-Social Freaks</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+
+
+    <div class="MainContainer">
+    <h3 style="color: #bce8f1; text-align: center">Your Connection is {{ connection }}</h3>
+
+    </div>
+
+
+
+  <div class = "page-header">
+
+      <h5 style="font-size: 70px"> The Adjacency list of the users Graph</h5>
+
+
+</div>
+
+
+  <div class="MainContainer two">
+
+{% for x in adj_matrix %}
+
+    {{ x }}
+
+    <br>
+
+  {% endfor %}
+
+  </div>
+
+  </body>
+  </html>

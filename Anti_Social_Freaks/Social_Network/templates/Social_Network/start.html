@@ -1,0 +1,104 @@
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Anty-Social Freaks</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- If IE use the latest rendering engine -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+  .backGround{
+      background-image: url({% static 'Social_Network/images/x2.jpg' %});
+      background-size: cover;
+    }
+  .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  .center {
+    margin: auto;
+    width: 20%;
+    height: 10%;
+    border: 3px solid green;
+    padding: 10px;
+}
+  .FontEdits {
+      font-family: Times, serif ;
+  }
+  .MainTitle{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+
+  }
+  .SecondTitle{
+    margin-top: 1%;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+
+  }
+.MainContainer{
+      background-color: rgba(34, 34, 34, 0.7) ;
+      width: 40%;
+      margin: auto;
+      margin-top: 10%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      position: relative;
+    }
+
+
+
+  </style>
+  </head>
+  <body class="backGround">
+
+
+
+  <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src=" {% static 'Social_Network/images/White_Globe_Icon.png' %} " />
+
+          <a  class="navbar-brand" href="">Anti-Social Freaks</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+    <div class="MainContainer">
+    <h1 class="MainTitle">Hello There!!</h1>
+
+    <h2 class="SecondTitle"> New to the website?  <a href="{%   url 'Social_Network:register' %}" style="font-weight: bold; font-size: 40px; color: #2b669a;
+     text-decoration: none ; ">Sign Up</a></h2>
+
+     <h2 class="SecondTitle">Already a member? <a href="login/" style="font-weight: bold; font-size: 40px; color: #d9534f;
+     text-decoration: none ; ">Log In</a></h2>
+
+
+    <br><br>
+    #we own your data
+
+    </div>
+
+  </body>
+  </html>

@@ -1,25 +1,152 @@
+{% load staticfiles %}
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+  <html>
+  <head>
+    <title>Log In</title>
     <meta charset="UTF-8">
-    <title> Login </title>
-</head>
-<body>
- <div class="container">
-    <h1> WELCOME </h1>
-    <p>
-    You can login from here...Mr/Freak.
-    </p>
-    <h2>login</h2>
-    <form method="post">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- If IE use the latest rendering engine -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+  .backGround{
+      background-image: url({% static 'Social_Network/images/x2.jpg' %});
+      background-size: cover;
+    }
+  .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  .center {
+    margin: auto;
+    width: 20%;
+    height: 10%;
+    border: 3px solid green;
+    padding: 10px;
+}
+  .FontEdits {
+      font-family: Times, serif ;
+  }
+  .MainTitle{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+
+  }
+  .SecondTitle{
+    margin-top: 1%;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+
+  }
+
+     .Titles{
+      color: rgba(255, 255, 255, 1);
+      font-size: 20px;
+      text-align: left;
+      font-weight: bold;
+      display: block;
+    }
+
+  .MainContainer{
+      background-color: rgba(34, 34, 34, 0.7);
+      width: 50%;
+      margin: 10% 10% 10% 30% ;
+      padding: 2% 2%;
+    }
+
+   .Sign{
+        color: #67b168;
+        align-content: center;
+    }
+
+    .LogIn{
+        color: gold;
+        align-content: center;
+    }
+
+
+
+    .form{
+
+        color: lightseagreen;
+    }
+
+
+  </style>
+  </head>
+  <body class="backGround">
+
+
+
+
+  <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src=" {% static 'Social_Network/images/White_Globe_Icon.png' %} " />
+
+          <a  class="navbar-brand" href="">Anti-Social Freaks</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+    <div class="MainContainer">
+
+
+
+
+
+        <div class="Titles">
+        <h2>Log in to >> Anti Social Freaks..</h2>
+
+          <form method="post">
+              <div class="form">
     {% csrf_token%}
     {{ form.as_p }}
-    <button type="submit">Login</button>
-    </form>
-     <form>
-         <button type="submit" formaction="/anti-social/register/">Register</button>
-     </form>
 
- </div>
-</body>
-</html>
+                  </div>
+
+            <div class="LogIn">
+                         <button type="submit">LogIn</button>
+
+
+                </div>
+
+
+
+    </form>
+
+            <form>
+                <div class="Sign">
+                <button type="submit" formaction="/anti-social/register/">SignUp</button>
+                </div>
+            </form>
+
+
+      </div>
+
+
+
+
+
+    </div>
+
+  </body>
+  </html>

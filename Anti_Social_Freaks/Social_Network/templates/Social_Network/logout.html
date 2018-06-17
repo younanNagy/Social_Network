@@ -1,20 +1,115 @@
+
+
+
+
+{% load staticfiles %}
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+  <html>
+  <head>
+    <title>Anty-Social Freaks</title>
     <meta charset="UTF-8">
-    <title> Logged out </title>
-</head>
-<body>
- <div class="container">
-    <h1> BYE </h1>
-    <p>
-    You've logged out...you're not Mr/Freak anymore!!
-    </p>
-     <form method="post">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- If IE use the latest rendering engine -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <style>
+  * {
+   margin: 0;
+   padding: 0;
+  }
+  .backGround{
+      background-image: url({% static 'Social_Network/images/x2.jpg' %});
+      background-size: cover;
+    }
+  .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  .center {
+    margin: auto;
+    width: 20%;
+    height: 10%;
+    border: 3px solid green;
+    padding: 10px;
+}
+  .FontEdits {
+      font-family: Times, serif ;
+  }
+  .MainTitle{
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+
+  }
+  .SecondTitle{
+    margin-top: 1%;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+
+
+  }
+.MainContainer{
+      background-color: rgba(34, 34, 34, 0.7) ;
+      width: 40%;
+      margin: auto;
+      margin-top: 10%;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      position: relative;
+    }
+
+
+
+  </style>
+  </head>
+  <body class="backGround">
+
+
+
+  <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src=" {% static 'Social_Network/images/White_Globe_Icon.png' %} " />
+
+          <a  class="navbar-brand" href="">Anti-Social Freaks</a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+    <div class="MainContainer">
+
+
+
+    <h2 class="MainTitle">You've logged out...you're not Mr/Freak anymore!! come back later bye.. </h2>
+
+
+         <form method="post">
     {% csrf_token%}
     {{ form.as_p }}
-    <button type="submit" formaction="/anti-social/login/">Login</button>
+
+         <h2 class="SecondTitle"> <a href="/anti-social/login/" style="font-weight: bold; font-size: 40px; color: #d9534f;
+     text-decoration: none ; ">Log In</a></h2>
+
     </form>
- </div>
-</body>
-</html>
+
+
+
+
+
+    </div>
+
+  </body>
+  </html>

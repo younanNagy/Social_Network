@@ -1,49 +1,395 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
+  <title>Timeline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .clearfix::after, .clearfix::before {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  .icon{
+    height :30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+
+  .backGround{
+      background-image: url({% static 'Social_Network/images/x2.jpg' %});
+      background-size: cover;
+    }
+
+  /**/
+  /* Profile container */
+  .profile {
+    margin: 20px 0;
+  }
+
+  /* Profile sidebar */
+  .profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: rgba(34,34,34,0.7);
+  }
+
+  .profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+  }
+
+  .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .profile-usertitle-name {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+
+  .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+  }
+
+  .profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+  }
+
+  .profile-usermenu {
+    margin-top: 30px;
+  }
+
+  .profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+  }
+
+  .profile-usermenu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+  }
+
+  .profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+  }
+
+  .profile-usermenu ul li.active {
+    border-bottom: none;
+  }
+
+  .profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+  }
+
+  /* Profile Content */
+  .profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+  }
+  .GeneratedContainers{
+    background-color: rgba(34, 34, 34, 0.7) ;
+    margin-top: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+  }
+  .SuggestedFriendsContainer{
+    background-color: rgba(34, 34, 34, 0.7) ;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+   #PostLabel{
+    background-color: #f5f5f5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 35px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  #CommentLabel{
+    background-color: #f5f5f5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 84%;
+    display: inline-block;
+  }
+
+  #PostTextArea {
+  resize: vertical;
+  height: 100px;
+  width: 100%
+
+  }
+
+  #CommentTextArea{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    resize: vertical;
+    height: 50px;
+    width: 90%;
+    display: inline-block;
+  }
+  #CommentPP{
+    display: inline-block;
+    border-radius: 50%;
+    width: 5%;
+    height: 5%;
+  }
+  #CommentOwnerInfo{
+    display: block;
+  }
+
+  </style>
 </head>
-<body>
+<body class="backGround">
+<nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <img class="icon" src="{% static 'Social_Network/images/White_Globe_Icon.png' %}" />
+          <a  class="navbar-brand" href="">Anti-Social Freaks</a>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
 
-{{ username.username }}
+
+
+              <li> <a href="{%   url 'Social_Network:home' %}">Timeline</a></li>
+              <li><a href="{%   url 'Social_Network:profile' %}">My Profile</a></li>
+              <li><a href="{% url 'Social_Network:logout' %}">Sign Out</a></li>
 
 
 
-<br> <br> <br>
+            </ul>
+      </div>
+    </nav>
 
-Add as a friend
-<form method="post"  action="AddFriend/{{ username.id }}/ ">
+
+<div class="container-fluid">
+    <div> <!-- class="row profile"> -->
+    <div class="col-md-2">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="{% static 'Social_Network/images/Profile-Pic.jpg' %}" class="img-responsive" alt="">
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            {{ user.username }}
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+
+            <form action="logout/" method="post">
+
+                {% csrf_token%}
+
+          <button type="submit" class="btn btn-danger btn-sm">Sign Out</button>
+
+                </form>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+
+      </div>
+    </div>
+    <div class="col-sm-8" style="color: #5bc0de">
+
+
+{% for post in posts %}
+
+            <div class="GeneratedContainers">
+            <div>
+                <img src="{% static 'Social_Network/images/Profile-Pic.jpg' %}" class="rounded-circle" id="CommentPP">
+                <a href= "#"style="color: white;" > {{ post.publisher.username }}</a>
+            </div>
+            <div>
+              <p id="PostLabel">{{ post.content }}</p>
+                <p>at: {{ post.date }}</p>
+                <p>
+                        Likes = {{    post.like_set.count }}
+                </p>
+            </div>
+
+
+            <div>
+
+                <form method="post"  action="LikePost/{{ post.id }}/ ">
     {% csrf_token %}
-    <input type = "submit" value="Add" />
+                     <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-thumbs-up"></i> Like</button>
+
+                </form>
+
+
+
+            </div>
+
+            <h5>Comments</h5>
+
+{% for comment in post.comment_set.all %}
+              <div> <!-- Comment part -->
+                <img src="{% static 'Social_Network/images/Profile-Pic.jpg' %}" class="rounded-circle" id="CommentPP">
+                <a href= "#" style="color: white; " > {{ comment.commenter.username }}</a>
+                <div class="clearfix">
+                  <p id="CommentLabel"> {{comment.content }} </p>
+
+                </div>
+
+              </div>
+
+
+
+              {% endfor %}
+
+
+<form method="post"  action="CommentPost/{{ post.id }}/ ">
+    {% csrf_token %}
+    {{ comment_form }}
+
+              <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-comment"></i> Comment </button>
 
 </form>
 
 
-<br> <br>
+            </div>
 
 
-Follow
-<form method="post"  action="FollowFriend/{{ username.id }}/ ">
+
+
+
+
+
+
+  {% endfor %}
+
+    </div>
+
+
+
+
+    <div class="col-sm-2 sidenav">
+      <div class="SuggestedFriendsContainer">
+        <p style="color: white;">Options you have to this Freak called {{ username.username }} </p>
+      </div>
+
+
+
+
+
+
+      <div class="SuggestedFriendsContainer">
+
+
+
+
+<form method="post"  action="{%   url 'Social_Network:followfriend' username.id  %}">
+
     {% csrf_token %}
-    <input type = "submit" value="Follow" />
+      <button type="submit" class="btn btn-warning btn-sm">Follow</button>
 
 </form>
 
-<br> <br>
+          <br>
 
-unFriend
-
-<form method="post"  action="unFriend/{{ username.id }}/ ">
+<form method="post"  action="{%   url 'Social_Network:addfriend' username.id  %}">
     {% csrf_token %}
-    <input type = "submit" value="UnFriend" />
+ <button type="submit" class="btn btn-success btn-sm">Add as a Freak</button>
+</form>
+
+
+<br>
+
+  <form method="post"  action="{%   url 'Social_Network:unfriend' username.id  %}">
+
+    {% csrf_token %}
+
+     <button type="submit" class="btn btn-danger btn-sm">UnFriend</button>
 
 </form>
 
 
+<br>
+
+            <form method="post"  action="{%   url 'Social_Network:connection' username.id  %}">
+
+    {% csrf_token %}
+
+     <button type="submit" class="btn btn-dark btn-sm">Check Connection</button>
+
+            </form>
 
 
 
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
 
 
 

@@ -6,8 +6,6 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username',
-                  'first_name',
-                  'last_name',
                   'password1',
                   'password2'
         )
@@ -20,10 +18,6 @@ class RegistrationForm(UserCreationForm):
 
         try:
             user = super(RegistrationForm,self).save(commit = False)
-            user.first_name = self.cleaned_data['first_name']
-            # cleaned_data--> makes sure that there is no SQL in the data and it's safe to save it.
-            user.last_name = self.cleaned_data['last_name']
-
 
         except ValueError:
             raise forms.ValidationError("This Username is already taken or Password does not match")

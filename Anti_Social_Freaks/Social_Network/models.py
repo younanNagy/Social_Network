@@ -3,15 +3,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
-class Profile(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
-    mobile=models.CharField(max_length=11)
-    about=models.CharField(max_length=500)
-    date_of_birth= models.DateField()
-    image=models.ImageField(upload_to='profile_image',blank=True)#$$$$$$$$$$$$$$$$$
-
-    def __str__(self):
-        return self.user.username
 
 
 
@@ -53,7 +44,7 @@ class Connection(models.Model):
 
 
         elif (self.status == 1):
-            return '%s' % ("Friends")
+            return '%s %s %s' % ("Friends" , self.From.username, self.To.username)
 
 
         elif (self.status == 2):
